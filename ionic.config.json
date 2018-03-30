@@ -1,0 +1,14 @@
+{
+  "name": "SchoolApp2",
+  "app_id": "",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  },
+  "proxies": [
+    {
+      "path": "/temp",
+      "proxyUrl": "http://shafihuzaib.com/temp/api.php?q=getSchools"
+    }
+  ]
+}

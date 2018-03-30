@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Set Pin</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <form [formGroup]="pinSetForm">
+    <ion-list>
+      <ion-item>
+        <ion-label floating>Pin</ion-label>
+        <ion-input [(ngModel)]="model.pin" type="password" value="" [formControl]="pinSetForm.controls['pin']" [ngClass]="{'error-border':!pinSetForm.controls['pin'].valid}"
+        ></ion-input>
+      </ion-item>
+      <div [hidden] class="error-box" *ngIf="pinSetForm.controls['pin'].hasError('required') && pinSetForm.controls['pin'].touched">* Pin is required</div>
+      <div [hidden] class="error-box" *ngIf="pinSetForm.controls['pin'].hasError('minlength') && pinSetForm.controls['pin'].touched">* Pin should be 4 digits</div>
+    		    <div [hidden] class="error-box" *ngIf="pinSetForm.controls['pin'].hasError('maxlength') && pinSetForm.controls['pin'].touched">* Pin should be maximum 4 digits</div>
+    		    <div [hidden] class="error-box" *ngIf="pinSetForm.controls['pin'].hasError('pattern') && pinSetForm.controls['pin'].touched">* Pin should be only numbers</div>
+      <ion-item>
+          <ion-label floating>Confirm Pin</ion-label>
+          <ion-input [(ngModel)]="model.cpin" type="password" value="" [formControl]="pinSetForm.controls['cpin']" [ngClass]="{'error-border':!pinSetForm.controls['cpin'].valid}"
+          ></ion-input>
+        </ion-item>
+        <div [hidden] class="error-box" *ngIf="pinSetForm.controls['cpin'].hasError('required') && pinSetForm.controls['cpin'].touched">* Confirm Pin is required</div>
+        <div [hidden] class="error-box" *ngIf="pinSetForm.controls['cpin'].hasError('minlength') && pinSetForm.controls['cpin'].touched">* Confirm Pin should be 4 digits</div>
+        <div [hidden] class="error-box" *ngIf="pinSetForm.controls['cpin'].hasError('maxlength') && pinSetForm.controls['cpin'].touched">* Confirm Pin should be maximum 4 digits</div>
+        <div [hidden] class="error-box" *ngIf="pinSetForm.controls['cpin'].hasError('pattern') && pinSetForm.controls['cpin'].touched">* Confirm Pin should be only numbers</div>
+    </ion-list>
+  <div padding>
+    <button type="submit" [disabled]="!pinSetForm.valid" ion-button color="primary" block (click)="setPin()">Set Pin</button>
+  </div>
+ 
+</form> 
+</ion-content>
