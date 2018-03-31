@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Verify Pin</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <form [formGroup]="verifyPinForm">
+    <ion-list>
+      <ion-item>
+        <ion-label floating>Pin</ion-label>
+        <ion-input [(ngModel)]="model.pin" type="password" value="" [formControl]="verifyPinForm.controls['pin']" [ngClass]="{'error-border':!verifyPinForm.controls['pin'].valid}"
+        ></ion-input>
+      </ion-item>
+      <div [hidden] class="error-box" *ngIf="verifyPinForm.controls['pin'].hasError('required') && verifyPinForm.controls['pin'].touched">* Pin is required</div>
+      <div [hidden] class="error-box" *ngIf="verifyPinForm.controls['pin'].hasError('minlength') && verifyPinForm.controls['pin'].touched">* Pin should be 4 digits</div>
+    		    <div [hidden] class="error-box" *ngIf="verifyPinForm.controls['pin'].hasError('maxlength') && verifyPinForm.controls['pin'].touched">* Pin should be maximum 4 digits</div>
+    		    <div [hidden] class="error-box" *ngIf="verifyPinForm.controls['pin'].hasError('pattern') && verifyPinForm.controls['pin'].touched">* Pin should be only numbers</div>
+    </ion-list>
+  <div padding>
+    <button type="submit" [disabled]="!verifyPinForm.valid" ion-button color="primary" block (click)="verifyPin()">Set Pin</button>
+  </div>
+ 
+</form> 
+</ion-content>

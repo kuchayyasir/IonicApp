@@ -13,28 +13,32 @@
             <ion-option *ngFor="let school of schools" [value]="school.id"> {{school.name}}</ion-option>
           </ion-select>
         </ion-item>
-       <!-- <ion-item>
+        <div [hidden] class="error-box" *ngIf="studentRegForm.controls['school'].hasError('required') && studentRegForm.controls['school'].touched">* School is required</div>
+       <ion-item>
       
-        <ion-label floating>Pin</ion-label>
-        <ion-input [(ngModel)]="model.pin" type="password" value="" [formControl]="studentRegForm.controls['pin']" [ngClass]="{'error-border':!studentRegForm.controls['pin'].valid}"
+        <ion-label floating>Student ID</ion-label>
+        <ion-input [(ngModel)]="model.studentId" type="text" value="" [formControl]="studentRegForm.controls['studentId']" [ngClass]="{'error-border':!studentRegForm.controls['studentId'].valid}"
         ></ion-input>
       </ion-item>
-      <div [hidden] class="error-box" *ngIf="studentRegForm.controls['pin'].hasError('required') && studentRegForm.controls['pin'].touched">* Pin is required</div>
-      <div [hidden] class="error-box" *ngIf="studentRegForm.controls['pin'].hasError('minlength') && studentRegForm.controls['pin'].touched">* Pin should be 4 digits</div>
-    		    <div [hidden] class="error-box" *ngIf="studentRegForm.controls['pin'].hasError('maxlength') && studentRegForm.controls['pin'].touched">* Pin should be maximum 4 digits</div>
-    		    <div [hidden] class="error-box" *ngIf="studentRegForm.controls['pin'].hasError('pattern') && studentRegForm.controls['pin'].touched">* Pin should be only numbers</div>
-      <ion-item>
-          <ion-label floating>Confirm Pin</ion-label>
-          <ion-input [(ngModel)]="model.cpin" type="password" value="" [formControl]="studentRegForm.controls['cpin']" [ngClass]="{'error-border':!studentRegForm.controls['cpin'].valid}"
+      <div [hidden] class="error-box" *ngIf="studentRegForm.controls['studentId'].hasError('required') && studentRegForm.controls['studentId'].touched">* Student ID is required</div>
+		    <div [hidden] class="error-box" *ngIf="studentRegForm.controls['studentId'].hasError('pattern') && studentRegForm.controls['studentId'].touched">* Student ID should be only numbers</div>
+       <ion-item>
+          <ion-label floating>Password</ion-label>
+          <ion-input [(ngModel)]="model.password" type="password" value="" [formControl]="studentRegForm.controls['password']" [ngClass]="{'error-border':!studentRegForm.controls['password'].valid}"
           ></ion-input>
         </ion-item>
-        <div [hidden] class="error-box" *ngIf="studentRegForm.controls['cpin'].hasError('required') && studentRegForm.controls['cpin'].touched">* Confirm Pin is required</div>
-        <div [hidden] class="error-box" *ngIf="studentRegForm.controls['cpin'].hasError('minlength') && studentRegForm.controls['cpin'].touched">* Confirm Pin should be 4 digits</div>
-        <div [hidden] class="error-box" *ngIf="studentRegForm.controls['cpin'].hasError('maxlength') && studentRegForm.controls['cpin'].touched">* Confirm Pin should be maximum 4 digits</div>
-        <div [hidden] class="error-box" *ngIf="studentRegForm.controls['cpin'].hasError('pattern') && studentRegForm.controls['cpin'].touched">* Confirm Pin should be only numbers</div> -->
+        <div [hidden] class="error-box" *ngIf="studentRegForm.controls['password'].hasError('required') && studentRegForm.controls['password'].touched">* Password is required</div>
+     <ion-item>
+          <ion-label floating>Nick Name</ion-label>
+          <ion-input [(ngModel)]="model.nickName" type="text" value="" [formControl]="studentRegForm.controls['nickName']" [ngClass]="{'error-border':!studentRegForm.controls['nickName'].valid}"
+          ></ion-input>
+        </ion-item>
+        <div [hidden] class="error-box" *ngIf="studentRegForm.controls['nickName'].hasError('required') && studentRegForm.controls['nickName'].touched">* Nick Name is required</div>
+     
+     
     </ion-list>
   <div padding>
-    <button type="submit" [disabled]="!studentRegForm.valid" ion-button color="primary" block (click)="setPin()">Set Pin</button>
+    <button type="submit" [disabled]="!studentRegForm.valid" ion-button color="primary" block (click)="register()">Register</button>
   </div>
  
 </form> 

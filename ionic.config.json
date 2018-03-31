@@ -4,11 +4,5 @@
   "type": "ionic-angular",
   "integrations": {
     "cordova": {}
-  },
-  "proxies": [
-    {
-      "path": "/temp",
-      "proxyUrl": "http://shafihuzaib.com/temp/api.php?q=getSchools"
-    }
-  ]
+  }
 }

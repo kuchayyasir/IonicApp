@@ -15,9 +15,10 @@ export class RegisterPage{
 
 constructor(private dataprovider:DataServiceProvider,private formBuilder :FormBuilder) {
   this.studentRegForm = this.formBuilder.group({
-    'school': ['', Validators.compose([Validators.required, Validators.pattern('[0-9]*'), Validators.minLength(4), Validators.maxLength(4)])],
-    'pin': ['', Validators.compose([Validators.required, Validators.pattern('[0-9]*'), Validators.minLength(4), Validators.maxLength(4)])],
-    'cpin': ['', Validators.compose([Validators.required, Validators.pattern('[0-9]*'), Validators.minLength(4)])]
+    'school': ['', Validators.compose([Validators.required])],
+    'studentId': ['', Validators.compose([Validators.required, Validators.pattern('[0-9]*')])],
+    'password': ['', Validators.compose([Validators.required])],
+    'nickName': ['', Validators.compose([Validators.required])],
   });
 }
 ionViewDidLoad() {
@@ -35,5 +36,17 @@ getSchool(): void {
         },
           error => console.log("Error :: " + error),
       )
+}
+register() {
+  console.log(this.model);
+  this.dataprovider.registerStudent(this.model).subscribe(
+    success =>{
+      console.log(success);
+    },
+    error=>{
+      console.log(error);
+    }
+
+  )
 }
 }

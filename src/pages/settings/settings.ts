@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController, AlertController} from 'ionic-angular';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Storage } from '@ionic/storage';
-import { HomePage } from '../home/home';
+import { VerifyPinPage } from '../verify-pin/verify-pin';
 @IonicPage()
 @Component({
   selector: 'page-settings',
@@ -29,6 +29,11 @@ export class SettingsPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad SettingsPage');
   }
+     clear() {
+    this.storage.clear().then(() => {
+      console.log('all keys cleared');
+    });
+  }
   setPin() {
 
     console.log('setpin called');
@@ -39,11 +44,11 @@ export class SettingsPage {
       cssClass: 'my-loading-class',
       //enableBackdropDismiss:true
     });
-
+      this.clear();
    // this.loader.present();
     this.storage.set('pin', this.model.pin);
     this.showDialog('Success','Pin Set Successfully!  ');
-    this.navCtrl.setRoot(HomePage);
+    this.navCtrl.setRoot(VerifyPinPage);
   }
   showDialog(title: any, body: any) {
 

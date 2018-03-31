@@ -14,7 +14,12 @@ export class DataServiceProvider {
     console.log('Hello DataServiceProvider Provider');
   }
   getSchools(){
-    return this.http.get('/temp');
+    return this.http.get('http://shafihuzaib.com/temp/api.php?q=getSchools');
               
+}
+registerStudent(data :any){
+  console.log(data.nickname);
+  return this.http.post('http://shafihuzaib.com/temp/api.php?q=register',{'school_id':1001,'student_id':270012,'password':'something123'});
+            
 }
 }
